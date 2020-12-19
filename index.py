@@ -1,5 +1,9 @@
 import subprocess
 
+origin = "https://github.com/devzonedz/python-git-automation.git"
+
+push_url = "https://devzonedz:DevZoneGit2020@github.com/devzonedz/python-git-automation.git"
+
 
 def run(*args):
 
@@ -8,10 +12,12 @@ def run(*args):
 
 def commit():
     run("add", ".")
+    # run("remote", "add", "origin", origin)
+    # run("remote", "set-url", "origin", origin)
     message = input("\nType in your commit message: ")
     commit_message = f"{message}"
     run("commit", "-am", commit_message)
-    run("push", "-u", "origin", "master")
+    run("push", push_url)
 
 
 commit()
