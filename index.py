@@ -1,12 +1,25 @@
+from pathlib import Path  # Python 3.6+ only
+from dotenv import load_dotenv
 import subprocess
+import os
 
-origin = "https://github.com/devzonedz/python-git-automation.git"
+load_dotenv()
 
-push_url = "https://devzonedz:DevZoneGit2020@github.com/devzonedz/python-git-automation.git"
+load_dotenv(verbose=True)
+
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
+
+
+password = os.getenv("PERSONAL_PASSWORD", "password not found")
+
+
+# origin = "https://github.com/devzonedz/python-git-automation.git"
+
+push_url = f"https://ScriptsGuy:{password}@github.com/ScriptsGuy/python-git-automation.git"
 
 
 def run(*args):
-
     return subprocess.check_call(["git"] + list(args))
 
 
